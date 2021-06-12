@@ -6,7 +6,7 @@ import setuptools
 plugin_identifier = "psucontrol_webhooks"
 plugin_package = "octoprint_%s" % plugin_identifier
 plugin_name = "OctoPrint-PSUControl-Webhooks"
-plugin_version = "0.0.1"
+plugin_version = "1.0.0"
 plugin_description = "Adds webhooks and API requests support to OctoPrint-PSUControl as a sub-plugin"
 plugin_author = "Alexandre Nicolaie"
 plugin_author_email = "alexandre.nicolaie+octoprint@gmail.com"
