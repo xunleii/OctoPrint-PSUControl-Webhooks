@@ -1,0 +1,74 @@
+<!-- ko ifnot: settings.plugins.psucontrol -->
+<span class="help-inline label label-important">This plugin requires <a href="https://plugins.octoprint.org/plugins/psucontrol/" target="_blank">PSU Control</a> in order to function. It can be installed from the Plugin Manager.</span>
+<!-- /ko -->
+
+<form class="form-horizontal">
+    <h4>API/Webhook information</h4>
+    <div class="control-group">
+        <label class="control-label">Address</label>
+        <div class="controls">
+            <input type="text" class="input" data-bind="value: settings.plugins.psucontrol_webhooks.address" placeholder="https://webhook.site/">
+        </div>
+    </div>
+
+    <h4>Get PSU state configuration</h4>
+    <div class="control-group">
+        <label class="control-label">Get PSU state</label>
+        <div class="controls">
+            <select class="input-small"
+                data-bind="options: ['GET','POST'], value: settings.plugins.psucontrol_webhooks.get_psu_state.method, optionsCaption"
+            ></select>
+            <input type="text" class="input" data-bind="value: settings.plugins.psucontrol_webhooks.get_psu_state.path" placeholder="/get_psu_state">
+        </div>
+        <label class="control-label">Get PSU state payload</label>
+        <div class="controls">
+            <textarea rows="5" class="block" data-bind="value: settings.plugins.psucontrol_webhooks.get_psu_state.payload"></textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+          <input type="checkbox" data-bind="checked: settings.plugins.psucontrol_webhooks.get_psu_state.on_if_ok"> PSU is ON if the response is less than 400.
+        </label>
+      </div>
+    </div>
+
+<!-- ko ifnot: settings.plugins.psucontrol_webhooks.get_psu_state.on_if_ok -->
+    <div class="control-group">
+      <label class="control-label">Custom Python handler</label>
+      <div class="controls">
+          <textarea rows="5" class="block" data-bind="value: settings.plugins.psucontrol_webhooks.get_psu_state.python_handler"></textarea>
+      </div>
+  </div>
+<!-- /ko -->
+
+    <h4>Update PSU state configuration</h4>
+    <div class="control-group">
+        <label class="control-label">Turn PSU on</label>
+        <div class="controls">
+            <select class="input-small"
+                data-bind="options: ['GET','POST','PUT'], value: settings.plugins.psucontrol_webhooks.turn_psu_on.method, optionsCaption"
+            ></select>
+            <input type="text" class="input" data-bind="value: settings.plugins.psucontrol_webhooks.turn_psu_on.path" placeholder="/turn_psu_on">
+        </div>
+        <label class="control-label">Turn PSU on payload</label>
+        <div class="controls">
+            <textarea rows="5" class="block" data-bind="value: settings.plugins.psucontrol_webhooks.turn_psu_on.payload"></textarea>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">Turn PSU off</label>
+        <div class="controls">
+            <select class="input-small"
+                data-bind="options: ['DELETE','GET','POST','PUT'], value: settings.plugins.psucontrol_webhooks.turn_psu_off.method, optionsCaption"
+            ></select>
+            <input type="text" class="input" data-bind="value: settings.plugins.psucontrol_webhooks.turn_psu_off.path" placeholder="/turn_psu_off">
+        </div>
+        <label class="control-label">Turn PSU off payload</label>
+        <div class="controls">
+            <textarea rows="5" class="block" data-bind="value: settings.plugins.psucontrol_webhooks.turn_psu_off.payload"></textarea>
+        </div>
+    </div>
+</form>
